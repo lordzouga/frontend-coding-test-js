@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:bg-stone-400 bg-stone-200 h-screen text-left">
+    <div class="lg:bg-stone-300 bg-stone-200 h-screen text-left">
         <nav class="flex px-4 lg:h-14 h-12 lg:px-[400px] font-semibold text-base">
             <h1 class="self-center text-xl"> {{ pageTitle }} </h1>
         </nav>
