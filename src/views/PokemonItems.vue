@@ -8,13 +8,20 @@
         <div class="pokeroot flex flex-col text-base bg-stone-200 lg:-mx-8 lg:p-8 rounded-lg 
                      lg:h-[75vh] lg:overflow-y-scroll mt-4 lg:shadow-md lg:ring-1 lg:ring-stone-600/10 ">
             <Suspense>
-                <PokemonList></PokemonList>
+                <PokemonList :page="page" @itemcount="setPageCount"></PokemonList>
                 <template #fallback>
                     Loading pokemons...
                 </template>
             </Suspense>
         </div>
-        <pager class="mt-4 ml-auto"></pager>
+
+        <VuePaginate v-model="page" :page-count="pageCount" :page-range="3" :margin-pages="2" :click-handler="pageClicked"
+            prev-text="Prev" next-text="Next" container-class="flex bg py-1.5 px-1.5 bg-stone-200 rounded-md 
+            shadow-sm ring-1 ring-stone-600/10 font-medium text-stone-500"
+            page-link-class="text-xs px-2 py-0.5 hover:bg-purple-500/20 hover:text-purple-800 rounded-md cursor-pointer"
+            prev-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
+            next-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
+            active-class="text-purple-800 font-bold" @update:model-value="page = $event" class="mt-4 ml-auto" />
     </div>
 </template>
 
@@ -22,7 +29,24 @@
 import PokemonList from './PokemonList.vue';
 // import { Item } from 'pokenode-ts';
 import Listbox from '../components/listbox.vue';
-import pager from '../components/pager.vue';
+import { VuePaginate } from '@svifty7/vue-paginate';
+import { ref, watch } from 'vue';
+
+const page = ref(1);
+const pageCount = ref(1);
+const LIMIT = 20;
+watch(page, (newPage) => {
+
+});
+
+function setPageCount(count) {
+    pageCount.value = (count - (count % LIMIT)) / LIMIT;
+}
+
+function pageClicked(pg) {
+
+}
+
 </script>
 
 <style>

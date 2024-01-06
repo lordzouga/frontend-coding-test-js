@@ -1,13 +1,15 @@
 import { MainClient } from 'pokenode-ts';
 
-export const useGetItems = async () => {
+const LIMIT = 20;
+
+export const useGetItems = async (page) => {
     const api = new MainClient();
 
-    const { results } = await api.item.listItems();
+    const { results, count } = await api.item.listItems((page - 1) * LIMIT, LIMIT);
 
     const items = await Promise.all(results.map(async ( { name, url } ) => {
         return await api.item.getItemByName(name);
     }));
-    
-    return { items }
+
+    return { items, count }
 }
