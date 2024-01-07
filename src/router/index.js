@@ -4,6 +4,7 @@ import ExerciseLayout from '../components/layout/ExerciseLayout.vue'
 import Error from '../views/Error.vue'
 import Home from '../views/Home.vue'
 import PokemonItems from '../views/PokemonItems.vue';
+import ItemDetails from '../views/ItemDetails.vue';
 
 const mainRoutes = [
   {
@@ -19,6 +20,11 @@ const exerciseRoutes = [
         path: '',
         name: 'PokemonItems',
         component: PokemonItems
+    },
+    {
+        path: ':itemName',
+        name: 'ItemDetails',
+        component: ItemDetails
     }
 ]
 
