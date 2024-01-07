@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col">
         <div>
-            <IconArrowNarrowLeft></IconArrowNarrowLeft>
+            <IconArrowLeft class="text-stone-700 hover:text-purple-700 cursor-pointer" @click="goBack()" />
         </div>
 
         <Container>
@@ -17,11 +17,13 @@
 </template>
 <script setup>
 import { IconArrowLeft, IconArrowNarrowLeft } from '@tabler/icons-vue'
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 // import { Item } from 'pokenode-ts';
 import PokemonItem from '../components/PokemonItem.vue'
 import Container from '../components/container.vue';
 
 const { itemName } = useRoute().params;
 
+const router = useRouter();
+const goBack = () => router.go(-1)
 </script>
