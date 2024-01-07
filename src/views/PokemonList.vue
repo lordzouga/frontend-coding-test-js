@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useGetItems } from '../composables/usegetitems';
 
 const props = defineProps(["page"]);
@@ -39,7 +39,7 @@ const loadData = async (page) => {
 await loadData(props.page);
 
 watch(() => props.page, async (newPage) => {
-    loadData(newPage);
+    await loadData(newPage);
 });
 
 

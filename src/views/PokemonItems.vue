@@ -5,15 +5,14 @@
             <Listbox></Listbox>
         </div>
 
-        <div class="pokeroot flex flex-col text-base bg-stone-200 lg:-mx-8 lg:p-8 rounded-lg 
-                     lg:h-[75vh] lg:overflow-y-scroll mt-4 lg:shadow-md lg:ring-1 lg:ring-stone-600/10 ">
+        <Container>
             <Suspense>
                 <PokemonList :page="page" @itemcount="setPageCount"></PokemonList>
                 <template #fallback>
                     Loading pokemons...
                 </template>
             </Suspense>
-        </div>
+        </Container>
 
         <VuePaginate v-model="page" :page-count="pageCount" :page-range="3" :margin-pages="2" :click-handler="pageClicked"
             prev-text="Prev" next-text="Next" container-class="flex bg py-1.5 px-1.5 bg-stone-200 rounded-md 
@@ -31,6 +30,7 @@ import PokemonList from './PokemonList.vue';
 import Listbox from '../components/listbox.vue';
 import { VuePaginate } from '@svifty7/vue-paginate';
 import { ref, watch } from 'vue';
+import Container from '../components/container.vue';
 
 const page = ref(1);
 const pageCount = ref(1);

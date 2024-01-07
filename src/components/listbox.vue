@@ -1,7 +1,7 @@
 <template>
     <Listbox v-model="selectedOption">
         <div class="relative">
-            <ListboxButton class="flex rounded-md lg:bg-stone-200 bg-stone-100 py-1.5 px-3 shadow-sm text-xs w-[120.18px] ring-stone-600/10 ring-1 font-medium 
+            <ListboxButton class="flex rounded-md lg:bg-stone-200 bg-stone-100 py-1.5 px-3 shadow-sm text-xs w-[100.76px] ring-stone-600/10 ring-1 font-medium 
                 hover:ring-2 hover:ring-offset-1 hover:ring-purple-500">
                 {{ selectedOption.name }} <IconSelector class="h-4 w-4 ml-auto text-stone-500"></IconSelector>
             </ListboxButton>
