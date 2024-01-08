@@ -34,17 +34,18 @@
             </span>
         </div>
 
-        <div class="rounded-lg mt-8 ring-stone-600/10 shadow-[0_0_1px_1px_rgba(0,0,0,0.14)] overflow-x-scroll ">
+        <div class="rounded-lg mt-8 bg-stone-100 ring-stone-600/10 
+            shadow-[0_0_1px_1px_rgba(0,0,0,0.14)] overflow-x-scroll ">
             <table class=" w-full table-auto border-collapse p-0 m-0 ">
                 <thead>
-                    <tr class="border-b bg-stone-100 text-sm">
+                    <tr class="border-b text-sm">
                         <th class="px-4 p-2  font-semibold text-start text-stone-400">Flavor</th>
                         <th class="px-4 p-2  font-semibold text-start text-stone-400">Effect</th>
                     </tr>
                 </thead>
 
                 <tr v-if="details.flavor_text_entries.length > 0" v-for="flavor in getFlavors(details.flavor_text_entries)"
-                    :key="flavor.name" class="bg-stone-100 border-b border-stone-200 text-sm">
+                    :key="flavor.name" class=" border-b border-stone-200 text-sm">
                     <td class="px-4 p-2 font-medium text-stone-700">{{ useCleanName(flavor.name) }}</td>
                     <td class="px-4 p-2 tracking-wide text-stone-600">{{ flavor.text }}</td>
                 </tr>
@@ -65,11 +66,12 @@ import { useCleanName } from '../composables/usecleanname';
 
 /** @type { Item } */
 const details = ref({});
-const props = defineProps(["name"])
+const props = defineProps(["name"]);
 
 const { item } = await useGetItemDetails(props.name);
 details.value = item;
 
+/* Show only flavors in english language and also reduce object attributes to make the object easy to use */
 /** @param {Array} flavors  */
 function getFlavors(flavors) {
     return flavors.filter((flav) => flav.language.name === 'en')

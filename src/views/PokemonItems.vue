@@ -6,12 +6,15 @@
         </div>
 
         <Container>
-            <Suspense>
-                <PokemonList :page="page" @itemcount="setPageCount"></PokemonList>
-                <template #fallback>
-                    Loading pokemons...
-                </template>
-            </Suspense>
+
+            <KeepAlive>
+                <Suspense @resolve="onResolve">
+                    <PokemonList :page="page" @itemcount="setPageCount"></PokemonList>
+                    <template #fallback>
+                        Loading pokemons...
+                    </template>
+                </Suspense>
+            </KeepAlive>
         </Container>
 
         <VuePaginate v-model="page" :page-count="pageCount" :page-range="3" :margin-pages="2" :click-handler="pageClicked"
@@ -31,21 +34,24 @@ import Listbox from '../components/listbox.vue';
 import { VuePaginate } from '@svifty7/vue-paginate';
 import { ref, watch } from 'vue';
 import Container from '../components/container.vue';
+import { useState } from '../composables/usestate';
 
 const page = ref(1);
 const pageCount = ref(1);
 const LIMIT = 20;
-watch(page, (newPage) => {
-
-});
 
 function setPageCount(count) {
     pageCount.value = (count - (count % LIMIT)) / LIMIT;
 }
 
-function pageClicked(pg) {
+const { addToast } = useState();
 
-}
+/* When data finishes loading, show a toast */
+const onResolve = () => addToast({
+    title: "Load Successful",
+    note: "Loading list of pokemon items was completed successfully"
+})
+
 
 </script>
 

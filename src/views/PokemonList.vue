@@ -1,6 +1,6 @@
 <template>
     <RouterLink v-for="item in pokItems" :key="item.id" class="-my-4 mb-4 py-4 group 
-    hover:bg-stone-300 rounded-md -mx-4 px-4" :to="`/exercise/${item.name}`">
+    hover:bg-stone-300/40 rounded-md -mx-4 px-4" :to="`/exercise/${item.name}`">
         <div class="flex ">
             <div class="flex">
                 <span class="font-semibold text-base text-stone-800 group-hover:underline">{{ cleanName(item.name) }}</span>
