@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col root">
         <div>
-            <IconArrowLeft class="text-stone-700 hover:text-purple-700 cursor-pointer" @click="router.back" />
+            <IconArrowLeft class="text-stone-700 hover:text-purple-700 cursor-pointer back-arrow" @click="router.back" />
         </div>
 
-        <Container :loading="loading">
+        <Container :loading="loading" class="detail-container">
             <KeepAlive>
                 <Suspense @resolve="onResolve">
                     <PokemonItem :name="itemName" :key="itemName" @loading="loading = true" @loaded="loading = false">

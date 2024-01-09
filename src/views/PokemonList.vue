@@ -3,7 +3,8 @@
     hover:bg-stone-300/40 rounded-md -mx-4 px-4" :to="`/exercise/${item.name}`" data-test="item">
         <div class="flex ">
             <div class="flex">
-                <span class="font-semibold text-base text-stone-800 group-hover:underline">{{ cleanName(item.name) }}</span>
+                <span class="font-semibold text-base text-stone-800 group-hover:underline">{{ useCleanName(item.name)
+                }}</span>
                 <div class="text-xs ml-1 self-center px-1.5 py-0.5 bg-purple-300/30 text-purple-600 rounded-s font-medium">
                     {{ item.category.name }}
                 </div>
@@ -23,6 +24,7 @@
 import { ref, watch } from 'vue';
 import { useGetItems } from '../composables/usegetitems';
 import { useState } from '../composables/usestate';
+import { useCleanName } from '../composables/usecleanname';
 
 const props = defineProps(["page"]);
 const emit = defineEmits(["itemcount", "loading", "loaded"]);
@@ -51,9 +53,4 @@ watch(() => state.sortMode, async (_new) => {
     await loadData(props.page)
 })
 
-/** @param {String} name */
-function cleanName(name) {
-    const capitalized = name.split("-").map((s) => `${s[0].toLocaleUpperCase()}${s.slice(1)}`);
-    return capitalized.join(" ");
-}
 </script>

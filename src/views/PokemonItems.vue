@@ -1,11 +1,11 @@
 <template>
-    <div class="text-stone-800 flex flex-col">
-        <div class="items-center flex overflow-visible mt-8 lg:mt-4">
+    <div class="text-stone-800 flex flex-col root">
+        <div class="items-center flex overflow-visible mt-8 lg:mt-4 listbox">
             <span class="text-sm font-semibold mr-2 ">Sort:</span>
             <Listbox @changed="sortChanged"></Listbox>
         </div>
 
-        <Container :loading="loading">
+        <Container :loading="loading" class="list-container">
             <KeepAlive>
                 <Suspense @resolve="onResolve">
 
@@ -22,7 +22,7 @@
             page-link-class="text-xs px-2 py-0.5 hover:bg-purple-500/20 hover:text-purple-800 rounded-md cursor-pointer"
             prev-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
             next-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
-            active-class="text-purple-800 font-bold" @update:model-value="page = $event" class="mt-4 ml-auto" />
+            active-class="text-purple-800 font-bold" @update:model-value="page = $event" class="mt-4 ml-auto pager" />
     </div>
 </template>
 
@@ -66,7 +66,7 @@ const onResolve = () => addToast({
 const router = useRouter();
 
 function pageClicked(page) {
-    router.push({ path: `${page}` })
+    router.push({ path: `/exercise/${page}` });
     // nextTick(() => )
     // router.push
 }
@@ -80,7 +80,7 @@ function pageClicked(page) {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3131317f;
+    background: #78716ca3;
     -webkit-border-radius: 1ex;
     /* -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75); */
 }

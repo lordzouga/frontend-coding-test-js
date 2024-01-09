@@ -1,7 +1,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,vue}'],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            inter: ["Inter", { fontFeatureSettings: '"cv11", "ss01"' }]
+        }
+    },
   },
   plugins: [],
 }
