@@ -5,13 +5,15 @@
         </div>
 
         <Container>
-            <Suspense @resolve="onResolve">
-                <PokemonItem :name="itemName"></PokemonItem>
+            <KeepAlive>
+                <Suspense @resolve="onResolve">
+                    <PokemonItem :name="itemName" :key="itemName"></PokemonItem>
 
-                <template #fallback>
-                    Loading item details...
-                </template>
-            </Suspense>
+                    <template #fallback>
+                        Loading item details...
+                    </template>
+                </Suspense>
+            </KeepAlive>
         </Container>
     </div>
 </template>

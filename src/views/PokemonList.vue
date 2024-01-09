@@ -22,16 +22,17 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useGetItems } from '../composables/usegetitems';
+import { useState } from '../composables/usestate';
 
 const props = defineProps(["page"]);
 const emit = defineEmits(["itemcount"]);
 
 /** @type { Item[] } */
 const pokItems = ref([]);
+const { state } = useState();
 
 const loadData = async (page) => {
     const { items, count } = await useGetItems(page);
-    console.log("loading data");
 
     pokItems.value = items;
 
@@ -44,6 +45,9 @@ watch(() => props.page, async (newPage) => {
     await loadData(newPage);
 });
 
+watch(() => state.sortMode, async (_new) => {
+    await loadData(props.page)
+})
 
 /** @param {String} name */
 function cleanName(name) {

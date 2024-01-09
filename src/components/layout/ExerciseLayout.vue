@@ -4,10 +4,15 @@
             <h1 class="self-center text-lg text-stone-800"> {{ pageTitle }} </h1>
         </nav>
         <main class="lg:mx-[400px] mx-4">
-            <RouterView></RouterView>
+
+            <RouterView v-slot="{ Component }">
+                <KeepAlive :exclude="['ItemDetails']">
+                    <component :is="Component" />
+                </KeepAlive>
+            </RouterView>
+
         </main>
         <toast />
-
     </div>
 </template>
 

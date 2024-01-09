@@ -25,7 +25,7 @@
 </template>
   
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import {
     Listbox,
     ListboxButton,
@@ -39,4 +39,9 @@ const options = [
     { id: 2, name: 'Title', unavailable: false },
 ]
 const selectedOption = ref(options[0])
+
+const emit = defineEmits(["changed"]);
+
+watch(selectedOption, (newVal) => emit("changed", newVal));
+
 </script>

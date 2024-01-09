@@ -2,7 +2,7 @@
     <div class="text-stone-800 flex flex-col">
         <div class="items-center flex overflow-visible mt-8 lg:mt-4">
             <span class="text-sm font-semibold mr-2 ">Sort:</span>
-            <Listbox></Listbox>
+            <Listbox @changed="sortChanged"></Listbox>
         </div>
 
         <Container>
@@ -35,23 +35,41 @@ import { VuePaginate } from '@svifty7/vue-paginate';
 import { ref } from 'vue';
 import Container from '../components/container.vue';
 import { useState } from '../composables/usestate';
+import { useRoute, useRouter } from 'vue-router';
 
 const page = ref(1);
 const pageCount = ref(1);
 const LIMIT = 20;
 
+const params = useRoute().params;
+
+if (!params.page) {
+    page.value = 1;
+} else page.value = params.page;
+
+
 function setPageCount(count) {
     pageCount.value = (count - (count % LIMIT)) / LIMIT;
 }
 
-const { addToast } = useState();
+const { addToast, setSortMode } = useState();
 
+function sortChanged(newSort) {
+    setSortMode(newSort.id);
+}
 /* When data finishes loading, show a toast */
 const onResolve = () => addToast({
     title: "Load Successful",
     note: "Loading list of pokemon items was completed successfully"
 })
 
+const router = useRouter();
+
+function pageClicked(page) {
+    router.push({ path: `${page}` })
+    // nextTick(() => )
+    // router.push
+}
 
 </script>
 

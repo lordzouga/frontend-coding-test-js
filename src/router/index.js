@@ -22,10 +22,17 @@ const exerciseRoutes = [
         component: PokemonItems
     },
     {
+        path: ':page(\\d+)?',
+        name: 'PokemonItems',
+        component: PokemonItems
+    },
+    {
         path: ':itemName',
         name: 'ItemDetails',
         component: ItemDetails
-    }
+    },
+    
+    
 ]
 
 const routes = [

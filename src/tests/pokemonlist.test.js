@@ -15,7 +15,7 @@ const mock = vi.hoisted(() => {
 vi.mock('../composables/usegetitems.js', () => ({useGetItems: mock.useGetItems}))
 
 test("that list is rendered", async () => {
-    let count = 4;
+    let count = items.length;
 
     vi.mocked(useGetItems).mockResolvedValueOnce({ items, count })
 

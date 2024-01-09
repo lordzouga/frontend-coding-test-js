@@ -1,8 +1,11 @@
 import { reactive } from "vue";
 
 const state = reactive({
-    toasts: []
+    toasts: [],
+    sortMode: 1
 });
+
+const TOAST_DURATION = 5; // in seconds
 
 export const useState = () => {
     /* used to identify a toast */
@@ -17,8 +20,12 @@ export const useState = () => {
             let index = state.toasts.findIndex((t) => t.key === toast.key);
             if (index >= 0) state.toasts.splice(index, 1);
             
-        }, 5 * 1000);
+        }, TOAST_DURATION * 1000);
     }
 
-    return { state, addToast }
+    const setSortMode = (mode) => {
+        state.sortMode = mode
+    }
+
+    return { state, addToast, setSortMode }
 }
