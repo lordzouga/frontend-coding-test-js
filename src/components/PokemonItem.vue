@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <span class="text-lg font-semibold text-stone-800">
+        <span class="text-lg font-semibold text-stone-800" data-test="name">
             {{ useCleanName(details.name) }}
         </span>
 
@@ -13,7 +13,7 @@
                 <span class="text-stone-500 text-sm font-medium">
                     Cost
                 </span>
-                <span class="text-stone-800 font-medium">
+                <span class="text-stone-800 font-medium" data-test="cost">
                     {{ details.cost }}
                 </span>
             </div>

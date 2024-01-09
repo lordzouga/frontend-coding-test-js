@@ -32,7 +32,7 @@ import PokemonList from './PokemonList.vue';
 // import { Item } from 'pokenode-ts';
 import Listbox from '../components/listbox.vue';
 import { VuePaginate } from '@svifty7/vue-paginate';
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import Container from '../components/container.vue';
 import { useState } from '../composables/usestate';
 
