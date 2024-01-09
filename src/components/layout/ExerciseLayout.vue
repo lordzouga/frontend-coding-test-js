@@ -31,6 +31,7 @@ const doAdd = () => {
         note: "Awww, a toast to me? How nice!"
     });
 }
+
 </script>
 
 <style></style>

@@ -5,14 +5,13 @@
             <Listbox @changed="sortChanged"></Listbox>
         </div>
 
-        <Container>
-
+        <Container :loading="loading">
             <KeepAlive>
                 <Suspense @resolve="onResolve">
-                    <PokemonList :page="page" @itemcount="setPageCount"></PokemonList>
-                    <template #fallback>
-                        Loading pokemons...
-                    </template>
+
+                    <PokemonList :page="page" @itemcount="setPageCount" @loading="loading = true" @loaded="loading = false">
+                    </PokemonList>
+
                 </Suspense>
             </KeepAlive>
         </Container>
@@ -40,6 +39,7 @@ import { useRoute, useRouter } from 'vue-router';
 const page = ref(1);
 const pageCount = ref(1);
 const LIMIT = 20;
+const loading = ref(false);
 
 const params = useRoute().params;
 

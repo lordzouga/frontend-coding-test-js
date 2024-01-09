@@ -8,7 +8,7 @@
 
             <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                 leave-to-class="opacity-0">
-                <ListboxOptions class="absolute lg:bg-stone-200 bg-stone-100 py-1 rounded-md mt-1 shadow-lg">
+                <ListboxOptions class="absolute lg:bg-stone-200 bg-stone-100 py-1 rounded-md mt-1 shadow-lg z-10">
                     <ListboxOption v-for="option in options" :key="option.id" :value="option" :disabled="option.unavailable"
                         v-slot="{ active, selected }" class="px-1">
                         <li class="flex select-none py-1.5 pl-10 pr-3 text-xs cursor-default"

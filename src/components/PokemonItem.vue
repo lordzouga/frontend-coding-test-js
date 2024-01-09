@@ -67,10 +67,13 @@ import { useCleanName } from '../composables/usecleanname';
 /** @type { Item } */
 const details = ref({});
 const props = defineProps(["name"]);
+const emit = defineEmits(["loading", "loaded"])
 
+emit("loading");
 const { item } = await useGetItemDetails(props.name);
 details.value = item;
 
+emit("loaded")
 /* Show only flavors in english language and also reduce object attributes to make the object easy to use */
 /** @param {Array} flavors  */
 function getFlavors(flavors) {

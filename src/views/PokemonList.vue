@@ -25,18 +25,20 @@ import { useGetItems } from '../composables/usegetitems';
 import { useState } from '../composables/usestate';
 
 const props = defineProps(["page"]);
-const emit = defineEmits(["itemcount"]);
+const emit = defineEmits(["itemcount", "loading", "loaded"]);
 
 /** @type { Item[] } */
 const pokItems = ref([]);
 const { state } = useState();
 
 const loadData = async (page) => {
+    emit("loading");
     const { items, count } = await useGetItems(page);
 
     pokItems.value = items;
 
     emit("itemcount", count);
+    emit("loaded")
 }
 
 await loadData(props.page);
