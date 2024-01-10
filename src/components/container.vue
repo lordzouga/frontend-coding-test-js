@@ -1,7 +1,8 @@
 <template>
     <Transition :appear="true">
-        <div class="flex  relative flex-col text-base bg-stone-200 rounded-lg lg:-mx-8 -mx-4 h-[calc(100vh-120px)]
-                         lg:h-[65vh] xl:h-[75vh] mt-4 lg:shadow-md lg:ring-1 lg:ring-stone-600/10 main-container">
+        <div
+            class="flex  relative flex-col text-base bg-stone-200 rounded-lg lg:-mx-8 -mx-4 h-[calc(100vh-120px)]
+                         lg:h-[65vh] xl:h-[75vh] mt-8 lg:mt-4 lg:shadow-md lg:ring-1 lg:ring-stone-600/10 main-container">
             <div class="overflow-y-scroll lg:p-8 flex flex-col ">
                 <slot></slot>
             </div>
