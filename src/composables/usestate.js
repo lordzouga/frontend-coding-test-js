@@ -14,18 +14,25 @@ export const useState = () => {
     /* Adds a toast and also schedules it for removal after 5s */
     const addToast = (toast) => {
         toast.key = getKey();
+        toast.visible = true;
+
         state.toasts.push(toast);
 
         setTimeout(() => {
             let index = state.toasts.findIndex((t) => t.key === toast.key);
-            if (index >= 0) state.toasts.splice(index, 1);
+            if (index >= 0) state.toasts[index].visible = false;
             
         }, TOAST_DURATION * 1000);
+    }
+
+    const removeToast = (key) => {
+        let index = state.toasts.findIndex((t) => t.key === key);
+        if (index >= 0) state.toasts.splice(index, 1);
     }
 
     const setSortMode = (mode) => {
         state.sortMode = mode
     }
 
-    return { state, addToast, setSortMode }
+    return { state, addToast, removeToast, setSortMode }
 }
