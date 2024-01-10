@@ -1,6 +1,6 @@
 <template>
     <Transition :appear="true" @enter="onEnter">
-        <div class="flex flex-col">
+        <div class="flex flex-col px-4 lg:px-0">
             <span class="text-lg font-semibold text-stone-800 item-name" data-test="name">
                 {{ useCleanName(details.name) }}
             </span>
@@ -15,7 +15,7 @@
                         Cost
                     </span>
                     <span class="text-stone-800 font-medium" data-test="cost">
-                        {{ details.cost }}
+                        {{ details.cost.toLocaleString() }}
                     </span>
                 </div>
                 <div class="flex flex-col ml-8">

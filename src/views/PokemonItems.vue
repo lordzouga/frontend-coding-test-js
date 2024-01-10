@@ -22,7 +22,7 @@
             page-link-class="text-xs px-2 py-0.5 hover:bg-purple-500/20 hover:text-purple-800 rounded-md cursor-pointer"
             prev-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
             next-class="px-2 hover:bg-purple-500/20 hover:text-purple-800 rounded-sm cursor-pointer"
-            active-class="text-purple-800 font-bold" @update:model-value="page = $event" class="mt-4 ml-auto pager" />
+            active-class="text-purple-800 font-bold" @update:model-value="page = $event" class="my-4 ml-auto pager" />
     </div>
 </template>
 
