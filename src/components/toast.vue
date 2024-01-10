@@ -20,14 +20,7 @@
 </template>
 
 <script setup>
-import { toRef, watch } from 'vue';
 import { useState } from '../composables/usestate';
 
 const { state } = useState();
-
-// const toastsRef = toRef(state.toasts);
-
-watch(() => state.toasts, (newToasts) => {
-
-});
 </script>

@@ -1,7 +1,9 @@
 <template>
     <div class="lg:bg-stone-300 bg-stone-200 h-screen text-left font-inter">
-        <nav class="flex px-4 h-12 lg:px-[400px] font-semibold text-base" @click="doAdd">
-            <h1 class="self-center text-lg text-stone-800"> {{ pageTitle }} </h1>
+        <nav class="flex px-4 h-12 lg:px-[400px] font-semibold text-base">
+            <h1 class="self-center text-lg text-stone-800">
+                <RouterLink to="/exercise/1">{{ pageTitle }} </RouterLink>
+            </h1>
         </nav>
         <main class="lg:mx-[400px] mx-4">
             <RouterView v-slot="{ Component, route }">
