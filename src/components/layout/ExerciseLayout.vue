@@ -1,11 +1,14 @@
 <template>
-    <div class="lg:bg-stone-300 bg-stone-200 h-screen text-left font-inter">
+    <div class="lg:bg-stone-300 bg-stone-200 h-screen text-left font-inter relative">
+        <div class="absolute w-full h-full bg-pokemon-bg bg-repeat"></div>
+        <div class="absolute w-full h-full bg-stone-200/95 lg:bg-stone-300/95"></div>
         <nav class="flex px-4 h-12 lg:px-[400px] font-semibold text-base">
-            <h1 class="self-center text-lg text-stone-800">
+            <h1 class="self-center text-lg text-stone-800 z-10">
                 <RouterLink to="/exercise/1">{{ pageTitle }} </RouterLink>
             </h1>
         </nav>
         <main class="lg:mx-[400px] mx-4">
+
             <RouterView v-slot="{ Component, route }">
                 <Transition :appear="true" @enter="onEnter" @leave="onLeave" mode="out-in">
                     <KeepAlive :exclude="['ItemDetails']">
@@ -46,8 +49,8 @@ const onEnter = (el, done) => {
         ease: "power3.easeOut",
         stagger: 0.1,
         onComplete: done,
-        clearProps: "zIndex,y"
-    }).set(container, { display: "flex", opacity: 1 })
+        // clearProps: "zIndex,y"
+    }).set(container, { display: "flex", opacity: 1, zIndex: 0 })
 }
 
 const onLeave = (el, done) => {

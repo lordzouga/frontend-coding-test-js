@@ -1,6 +1,6 @@
 <template>
     <div class="text-stone-800 flex flex-col root">
-        <div class="items-center flex overflow-visible mt-8 lg:mt-4 listbox">
+        <div class="items-center flex overflow-visible mt-8 lg:mt-4 listbox z-10">
             <span class="text-sm font-semibold mr-2 ">Sort:</span>
             <Listbox @changed="sortChanged"></Listbox>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <Transition :appear="true" @enter="onEnter">
-        <div class="flex flex-col px-4 lg:px-0">
+        <div class="flex flex-col px-4 lg:px-0 pt-4 lg:pt-0">
             <span class="text-lg font-semibold text-stone-800 item-name" data-test="name">
                 {{ useCleanName(details.name) }}
             </span>

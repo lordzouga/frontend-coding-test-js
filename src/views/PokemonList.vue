@@ -1,5 +1,5 @@
 <template>
-    <RouterLink v-for="item in pokItems" :key="item.id" class="-my-4 mb-4 py-4 group 
+    <RouterLink v-for="item in pokItems" :key="item.id" class="-my-4 mb-4 py-4 first:pt-8 lg:first:pt-4 group 
     hover:bg-stone-300/40 rounded-md lg:-mx-4 px-4" :to="`/exercise/${item.name}`" data-test="item">
         <div class="flex ">
             <div class="flex">
